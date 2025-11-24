@@ -7,21 +7,24 @@ export default function Particles() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return; // ← FIX 1: early null check
+    if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) return; // ← FIX 2: null check
-
-    const particles: { x: number; y: number; size: number }[] = [];
+    if (!ctx) return;
 
     function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const canvasEl = canvasRef.current; // <-- CHECK AGAIN inside function
+      if (!canvasEl) return;
+
+      canvasEl.width = window.innerWidth;
+      canvasEl.height = window.innerHeight;
     }
+
     resize();
     window.addEventListener("resize", resize);
 
-    // Create particles
+    const particles: { x: number; y: number; size: number }[] = [];
+
     for (let i = 0; i < 80; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -31,10 +34,10 @@ export default function Particles() {
     }
 
     function drawParticles() {
-      // ← FIX 3: extra runtime safety
-      if (!canvas || !ctx) return;
+      const canvasEl = canvasRef.current; // <-- CHECK AGAIN
+      if (!canvasEl || !ctx) return;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       ctx.fillStyle = "#155dfc";
 
       particles.forEach((p) => {
@@ -43,9 +46,9 @@ export default function Particles() {
         ctx.fill();
 
         p.y += 0.15;
-        if (p.y > canvas.height) {
+        if (p.y > canvasEl.height) {
           p.y = -10;
-          p.x = Math.random() * canvas.width;
+          p.x = Math.random() * canvasEl.width;
         }
       });
 
@@ -54,9 +57,7 @@ export default function Particles() {
 
     drawParticles();
 
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
   return (
