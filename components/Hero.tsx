@@ -4,15 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Particles from "@/components/Particles"; 
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white to-blue-50 dark:from-gray-950 dark:to-gray-900 py-20 lg:py-2 px-6 md:px-12 flex justify-center items-center">
+    <section className="relative overflow-hidden bg-white dark:bg-gray-950 py-20 lg:py-2 px-6 md:px-12 flex justify-center items-center">
 
-      {/* Content Container */}
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-16 lg:gap-24">
+      <div className="absolute inset-0 z-0 opacity-60 dark:opacity-40">
+        <Particles />
+      </div>
 
-        {/* Left Side Text */}
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-16 lg:gap-24">
+
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +25,9 @@ export default function Hero() {
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white mb-6">
             Accelerating Business Growth Through 
-            <span className="text-blue-600 dark:text-blue-400"> Strategic Digital Solutions</span>
+            <span className="text-blue-600 dark:text-blue-400">
+              {" "}Strategic Digital Solutions
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
@@ -49,10 +54,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Right Side Image */}
-        <motion.div
-          viewport={{ once: true }}
-          className="relative flex justify-center"
-        >
+        <motion.div viewport={{ once: true }} className="relative flex justify-center">
           <div className="relative w-full max-w-md">
             <Image
               src="/hero-banner.png"
@@ -63,7 +65,7 @@ export default function Hero() {
               className="w-full h-auto drop-shadow-2xl select-none pointer-events-none"
             />
 
-            {/* Soft glow around image */}
+            {/* Soft Glow */}
             <div className="absolute inset-0 rounded-full bg-blue-400/20 blur-2xl -z-10"></div>
           </div>
         </motion.div>

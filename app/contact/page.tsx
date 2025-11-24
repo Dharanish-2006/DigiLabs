@@ -46,7 +46,7 @@ export default function ContactPage() {
             <span>1700 Eureka Rd, Roseville, CA 95661, USA</span>
           </div>
         </div>
-
+        
         {/* CONTACT FORM */}
         <form className="space-y-6">
           <Input type="text" placeholder="Your Name" />
