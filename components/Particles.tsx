@@ -7,27 +7,33 @@ export default function Particles() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) return; // ← FIX 1: early null check
 
-    const ctx = canvas.getContext("2d")!;
-    const particles: any[] = [];
-    const particleCount = 130;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return; // ← FIX 2: null check
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const particles: { x: number; y: number; size: number }[] = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
 
     // Create particles
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < 80; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 2 + 0.5,
       });
     }
 
     function drawParticles() {
+      // ← FIX 3: extra runtime safety
+      if (!canvas || !ctx) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#155dfc";
 
@@ -36,14 +42,11 @@ export default function Particles() {
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
 
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        // Wrap edges
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+        p.y += 0.15;
+        if (p.y > canvas.height) {
+          p.y = -10;
+          p.x = Math.random() * canvas.width;
+        }
       });
 
       requestAnimationFrame(drawParticles);
@@ -51,14 +54,16 @@ export default function Particles() {
 
     drawParticles();
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    return () => {
+      window.removeEventListener("resize", resize);
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <canvas ref={canvasRef} className="w-full h-full"></canvas>;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="w-full h-full"
+      style={{ display: "block" }}
+    />
+  );
 }
