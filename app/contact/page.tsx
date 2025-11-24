@@ -31,11 +31,11 @@ export default function ContactPage() {
         <div className="mb-16 space-y-4 text-center">
           <div className="flex items-center justify-center gap-3 text-lg">
             <Mail className="w-5 h-5 text-blue-600" />
-            <span>support@digilabsmarketing.com</span>
+            <span>sam@digilabsmarketing.com</span>
           </div>
           <div className="flex items-center justify-center gap-3 text-lg">
             <Phone className="w-5 h-5 text-blue-600" />
-            <span>+1 (XXX) XXX-XXXX</span>
+            <span>+1(916) 407-0909</span>
           </div>
           <div className="flex items-center justify-center gap-3 text-lg">
             <Globe className="w-5 h-5 text-blue-600" />
@@ -43,7 +43,7 @@ export default function ContactPage() {
           </div>
           <div className="flex items-center justify-center gap-3 text-lg">
             <MapPin className="w-5 h-5 text-blue-600" />
-            <span>United States (Serving clients globally)</span>
+            <span>1700 Eureka Rd, Roseville, CA 95661, USA</span>
           </div>
         </div>
 

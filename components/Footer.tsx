@@ -16,7 +16,7 @@ export default function Footer() {
           transition={{ duration: 0.4 }}
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Elevate Digital
+            DigiLabs
           </h3>
           <p className="text-sm mb-4">
             We’re a full-service digital marketing agency focused on helping brands
@@ -98,16 +98,16 @@ export default function Footer() {
             Contact Us
           </h4>
           <ul className="space-y-2 text-sm">
-            <li>Email: hello@elevatedigital.com</li>
-            <li>Phone: +91 98765 43210</li>
-            <li>Address: Chennai, India</li>
+            <li>Email: sam@digilabsmarketing.com</li>
+            <li>Phone: +1(916) 407-0909</li>
+            <li>1700 Eureka Rd, Roseville, CA 95661, USA</li>
           </ul>
         </motion.div>
       </div>
 
       {/* Bottom Section */}
       <div className="border-t border-gray-200 dark:border-gray-800 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} Elevate Digital. All rights reserved.
+        © {new Date().getFullYear()} DigiLabs. All rights reserved.
       </div>
     </footer>
   );
