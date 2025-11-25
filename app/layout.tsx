@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
+import Particles from "../components/Particles";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,17 +42,23 @@ export const metadata: Metadata = {
     ],
   },
 };
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} pt-24`}>
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+      <body className="min-h-screen overflow-x-hidden antialiased">
+<ThemeProvider>
+        <Navbar/>
+        {/* BACKGROUND MUST BE FIRST */}
+        <Particles />
+
+        {/* ALL CONTENT ABOVE IT */}
+        {children}
+
+        <Footer/>
+
+</ThemeProvider>
       </body>
     </html>
   );
 }
-

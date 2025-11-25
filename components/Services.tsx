@@ -4,8 +4,6 @@ import { JSX, useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "framer-motion";
-import Particles from "./Particles";
-// Icons
 import {
   Share2,
   Search,
@@ -80,10 +78,6 @@ export default function Services() {
   id="services"
   className="relative px-6 md:px-16 py-20 bg-white dark:bg-gray-950 transition-colors duration-500 overflow-hidden"
 >
-  {/* Particle Background */}
-  <div className="absolute inset-0 z-0 opacity-50 dark:opacity-30 pointer-events-none">
-    <Particles /> {/* <-- add same component used in Hero */}
-  </div>
 
   {/* Content Wrapper */}
   <div className="relative z-10">

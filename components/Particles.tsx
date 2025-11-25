@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 export default function Particles() {
+  // TYPE THE REF
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -12,59 +13,76 @@ export default function Particles() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    function resize() {
-      const canvasEl = canvasRef.current; // <-- CHECK AGAIN inside function
-      if (!canvasEl) return;
+    let w = (canvas.width = window.innerWidth);
+    let h = (canvas.height = window.innerHeight);
 
-      canvasEl.width = window.innerWidth;
-      canvasEl.height = window.innerHeight;
+    // ---- PARTICLE TYPE ----
+    class Particle {
+      x: number;
+      y: number;
+      speedX: number;
+      speedY: number;
+      size: number;
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.size = Math.random()  + 0.5;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0) this.x = w;
+        if (this.x > w) this.x = 0;
+        if (this.y < 0) this.y = h;
+        if (this.y > h) this.y = 0;
+      }
+
+      draw() {
+        ctx.fillStyle = "rgba(0, 122, 255, 0.65)";
+        ctx.fillRect(this.x, this.y, this.size, this.size);
+      }
     }
 
-    resize();
-    window.addEventListener("resize", resize);
+    // TYPE THE ARRAY
+    const particles: Particle[] = [];
+    for (let i = 0; i < 1200; i++) particles.push(new Particle());
 
-    const particles: { x: number; y: number; size: number }[] = [];
-
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-      });
-    }
-
-    function drawParticles() {
-      const canvasEl = canvasRef.current; // <-- CHECK AGAIN
-      if (!canvasEl || !ctx) return;
-
-      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-      ctx.fillStyle = "#155dfc";
+    const animate = () => {
+      ctx.clearRect(0, 0, w, h);
 
       particles.forEach((p) => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.y += 0.15;
-        if (p.y > canvasEl.height) {
-          p.y = -10;
-          p.x = Math.random() * canvasEl.width;
-        }
+        p.update();
+        p.draw();
       });
 
-      requestAnimationFrame(drawParticles);
-    }
+      requestAnimationFrame(animate);
+    };
 
-    drawParticles();
+    animate();
 
-    return () => window.removeEventListener("resize", resize);
+    const handleResize = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full"
-      style={{ display: "block" }}
+      className="
+        fixed inset-0
+        w-full h-full
+        pointer-events-none
+        -z-50 
+        opacity-100
+      "
     />
   );
 }

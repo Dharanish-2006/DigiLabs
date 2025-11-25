@@ -4,15 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import Particles from "@/components/Particles"; 
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white dark:bg-gray-950 py-20 lg:py-2 px-6 md:px-12 flex justify-center items-center">
-
-      <div className="absolute inset-0 z-0 opacity-60 dark:opacity-40">
-        <Particles />
-      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-16 lg:gap-24">
 
