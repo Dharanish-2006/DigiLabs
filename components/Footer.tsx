@@ -46,8 +46,8 @@ export default function Footer() {
             {[
               { name: "Home", url: "/" },
               { name: "About", url: "/about" },
-              { name: "Services", url: "#services" },
-              { name: "Contact", url: "#contact" },
+              { name: "Services", url: "/services" },
+              { name: "Contact", url: "/contact" },
             ].map((item, i) => (
               <li key={i}>
                 <Link
