@@ -43,21 +43,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden antialiased relative">
         <Particles />
-  <ThemeProvider>
-        <Navbar/>
-        {/* BACKGROUND MUST BE FIRST */}
-
-        {/* ALL CONTENT ABOVE IT */}
-        {children}
-
-        <Footer/>
-
-</ThemeProvider>
+        <ThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -50,7 +50,7 @@ export default function Particles() {
     }
 
     const particles: Particle[] = [];
-    for (let i = 0; i < 1200; i++) particles.push(new Particle(ctx));
+    for (let i = 0; i < 800; i++) particles.push(new Particle(ctx));
 
     const animate = () => {
       ctx.clearRect(0, 0, w, h);
