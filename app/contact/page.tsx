@@ -9,7 +9,7 @@ import { Mail, Phone, Globe, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <main className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+    <main className="text-gray-900 dark:text-gray-100">
       <Navbar />
 
       <section className="py-24 px-6 md:px-16 max-w-3xl mx-auto">
@@ -61,7 +61,17 @@ export default function ContactPage() {
               Send Message
             </Button>
           </div>
-        </form>
+        </form><br/>
+<div style={{ width: "100%", height: "450px" }}>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.1869644442413!2d-121.21622992494385!3d38.73647165618493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809b1e2b16347519%3A0x85d33e56df285f31!2sEureka%20Rd%2C%20California%2C%20USA!5e0!3m2!1sen!2sin!4v1764168816825!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
       </section>
     </main>
   );

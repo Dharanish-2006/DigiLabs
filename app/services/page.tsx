@@ -53,7 +53,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+    <main className="text-gray-900 dark:text-gray-100">
       <Navbar />
 
       {/* HERO */}

@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 
 export default function AboutPage() {
   return (
-    <main className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+    <main className="text-gray-900 dark:text-gray-100">
       <Navbar />
       <section className="relative overflow-hidden py-24 px-6 md:px-16 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800">
         <motion.div

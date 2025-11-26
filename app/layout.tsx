@@ -46,11 +46,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen overflow-x-hidden antialiased">
-<ThemeProvider>
+      <body className="min-h-screen overflow-x-hidden antialiased relative">
+        <Particles />
+  <ThemeProvider>
         <Navbar/>
         {/* BACKGROUND MUST BE FIRST */}
-        <Particles />
 
         {/* ALL CONTENT ABOVE IT */}
         {children}

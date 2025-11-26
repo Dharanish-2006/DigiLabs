@@ -7,8 +7,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white dark:bg-gray-950 py-20 lg:py-2 px-6 md:px-12 flex justify-center items-center">
-
+    <section className="relative overflow-hidden bg-white dark:bg-gray-950 py-20 lg:py-20 px-6 md:px-12 flex justify-center items-center">
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-16 lg:gap-24">
 
         <motion.div
