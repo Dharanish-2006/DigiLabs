@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 
 export default function Particles() {
-  // TYPE THE REF
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -16,19 +15,22 @@ export default function Particles() {
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
 
-    // ---- PARTICLE TYPE ----
+    // ---- FIX: PASS CTX TO THE CLASS ----
     class Particle {
       x: number;
       y: number;
       speedX: number;
       speedY: number;
       size: number;
-      constructor() {
+      ctx: CanvasRenderingContext2D;
+
+      constructor(ctx: CanvasRenderingContext2D) {
+        this.ctx = ctx;
         this.x = Math.random() * w;
         this.y = Math.random() * h;
         this.speedX = (Math.random() - 0.5) * 0.3;
         this.speedY = (Math.random() - 0.5) * 0.3;
-        this.size = Math.random()  + 0.5;
+        this.size = Math.random() + 0.5;
       }
 
       update() {
@@ -42,18 +44,16 @@ export default function Particles() {
       }
 
       draw() {
-        ctx.fillStyle = "rgba(0, 122, 255, 0.65)";
-        ctx.fillRect(this.x, this.y, this.size, this.size);
+        this.ctx.fillStyle = "rgba(0, 122, 255, 0.65)";
+        this.ctx.fillRect(this.x, this.y, this.size, this.size);
       }
     }
 
-    // TYPE THE ARRAY
     const particles: Particle[] = [];
-    for (let i = 0; i < 1200; i++) particles.push(new Particle());
+    for (let i = 0; i < 1200; i++) particles.push(new Particle(ctx));
 
     const animate = () => {
       ctx.clearRect(0, 0, w, h);
-
       particles.forEach((p) => {
         p.update();
         p.draw();
