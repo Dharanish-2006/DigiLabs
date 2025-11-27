@@ -78,7 +78,7 @@ export default function Services() {
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Heading */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-25">
           <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl">
             Our Strategic Solutions
           </h2>
