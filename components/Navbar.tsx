@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,35 +27,42 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-      ${
+      className={`fixed top-0 left-0 w-full z-[999] transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-2xl bg-gradient-to-r from-white/40 via-white/20 to-white/5 dark:from-black/40 dark:via-black/20 dark:to-black/5 shadow-lg border-b border-white/30 dark:border-white/10"
+          ? "backdrop-blur-2xl bg-white/10 dark:bg-black/20 border-b border-white/30 dark:border-white/10 shadow-[0_4px_40px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-        {/* Logo */}
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        {/* Brand Section */}
         <Link href="/" className="flex items-center gap-3 group">
           <Image
             src="/hero-banner.png"
+            width={42}
+            height={42}
             alt="DigiLabs Logo"
-            width={40}
-            height={40}
-            className="rounded-xl shadow-lg group-hover:scale-110 group-hover:shadow-purple-500/40 transition-all duration-300"
+            className="
+              rounded-xl shadow-lg 
+              group-hover:scale-110 
+              group-hover:shadow-purple-500/50 
+              transition-all duration-300
+            "
           />
+
           <span className="
-            text-3xl font-extrabold tracking-tight 
-            bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400
-            bg-clip-text text-transparent
-            drop-shadow-sm group-hover:opacity-90
+            text-3xl font-extrabold 
+            bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400
+            text-transparent bg-clip-text
+            tracking-tight drop-shadow-md
+            group-hover:opacity-90
             transition
           ">
             DigiLabs
           </span>
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-10 font-semibold">
           {navLinks.map((link) => {
             const active = pathname === link.href;
@@ -64,23 +71,24 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative transition-all 
+                className={`
+                  relative text-lg transition-all 
                   ${
                     active
-                      ? "text-purple-600 dark:text-purple-400"
-                      : "text-gray-700 dark:text-gray-300 hover:text-purple-500"
+                      ? "text-purple-400 drop-shadow-sm"
+                      : "text-white/90 hover:text-pink-400"
                   }
                 `}
               >
                 {link.name}
 
-                {/* Colorful underline for active link */}
+                {/* Neon Gradient Underline */}
                 {active && (
                   <span className="
                     absolute -bottom-1 left-0 w-full h-[3px]
                     bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400
-                    rounded-full shadow-md
-                  " />
+                    rounded-full shadow-[0_0_10px_rgba(255,0,160,0.7)]
+                  "></span>
                 )}
               </Link>
             );
@@ -89,36 +97,44 @@ export default function Navbar() {
           <ModeToggle />
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden relative z-[1001] p-3 rounded-xl 
-          bg-white/60 dark:bg-black/50 backdrop-blur-lg 
-          shadow-lg hover:shadow-purple-500/30 transition"
+          className="
+            md:hidden p-3 rounded-xl
+            bg-white/20 dark:bg-black/30 
+            backdrop-blur-xl border border-white/20
+            shadow-lg hover:shadow-purple-500/40 
+            transition-all
+          "
           onClick={() => setOpen(!open)}
         >
-          {open ? <X size={26} /> : <Menu size={26} />}
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          open ? "max-h-96" : "max-h-0"
-        }`}
+        className={`
+          md:hidden overflow-hidden transition-all duration-500
+          ${open ? "max-h-80" : "max-h-0"}
+        `}
       >
-        <div
-          className="
-          bg-white/95 dark:bg-black/90 backdrop-blur-xl
+        <div className="
+          flex flex-col gap-5 px-6 py-6 
+          bg-white/10 dark:bg-black/40 backdrop-blur-2xl 
           border-t border-white/20 dark:border-white/10
-          flex flex-col gap-5 px-6 pt-6 pb-6"
-        >
+          shadow-xl
+        ">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-lg font-medium text-gray-900 dark:text-gray-200 
-              hover:text-purple-500 transition"
+              className="
+                text-xl font-medium 
+                text-white/90 hover:text-purple-400 
+                transition-all
+              "
             >
               {link.name}
             </Link>
@@ -129,4 +145,4 @@ export default function Navbar() {
       </div>
     </header>
   );
-        }
+}
