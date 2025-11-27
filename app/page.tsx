@@ -2,11 +2,12 @@
 
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+
 export default function HomePage() {
   return (
-    <>
-      <Hero/>
-      <Services/>
-    </>
+    <main className="bg-[#0F172A] text-white">
+      <Hero />
+      <Services />
+    </main>
   );
 }
