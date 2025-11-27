@@ -30,13 +30,13 @@ export default function Hero() {
           <h1
             className="
               text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight 
-              bg-gradient-to-r from-purple-400 via-pink-400 to-orange-300 
-              text-transparent bg-clip-text drop-shadow-[0_4px_15px_rgba(255,0,150,0.45)]
+              bg-gradient-to-r from-purple-300 via-pink-300 to-orange-200
+              text-transparent bg-clip-text drop-shadow-[0_4px_15px_rgba(255,0,150,0.35)]
             "
           >
             Transform Your Business With
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-blue-300 to-purple-300 text-transparent bg-clip-text">
               High-Performance Digital Marketing
             </span>
           </h1>
@@ -60,7 +60,9 @@ export default function Hero() {
               >
                 Get Started
               </Button>
-            </LiButton           <Link href="/services">
+            </Link>
+
+            <Link href="/services">
               <Button
                 className="
                   px-8 py-4 text-lg rounded-full
@@ -70,13 +72,13 @@ export default function Hero() {
                   transition-all
                 "
               >
-                view services
+                View Services
               </Button>
             </Link>
           </div>
         </motion.div>
 
-        {/* RIGHT — IMAGE SECTION (RIGHT-ALIGNED, DYNAMIC SIZE) */}
+        {/* RIGHT — IMAGE SECTION UPDATED (BIGGER BOX + 3D + GLASS + NEON) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 40 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -84,52 +86,54 @@ export default function Hero() {
           viewport={{ once: true }}
           className="relative flex justify-end items-center w-full"
         >
-          <div className="relative w-[60vw] max-w-[600px] h-auto lg:w-[40vw] lg:max-w-[650px]">
+          {/* IMAGE WRAPPER */}
+          <div className="relative w-[70vw] max-w-[750px] h-auto lg:w-[45vw] lg:max-w-[780px]">
 
             {/* FLOAT ANIMATION */}
             <motion.div
-              animate={{ y: [-15, 10, -15] }}
+              animate={{ y: [-18, 12, -18] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative z-20"
             >
               <Image
                 src="/hero-banner.png"
                 alt="Digital marketing illustration"
-                width={600}
-                height={600}
+                width={800}
+                height={800}
                 priority
                 className="
                   w-full h-auto select-none pointer-events-none
-                  drop-shadow-[0_20px_55px_rgba(255,0,180,0.35)]
+                  drop-shadow-[0_25px_70px_rgba(255,0,180,0.45)]
                 "
               />
             </motion.div>
 
-            {/* GLASS SHADOW BACK */}
+            {/* 🔥 BIGGER GLASS BACK PANEL */}
             <div
               className="
                 absolute inset-0 
                 rounded-3xl 
-                bg-white/10 dark:bg-white/5 
-                backdrop-blur-2xl 
-                border border-white/20 
-                shadow-2xl 
+                bg-white/10 dark:bg-white/5
+                backdrop-blur-3xl
+                border border-white/30 dark:border-white/10
+                shadow-[0_0_60px_rgba(255,50,200,0.35)]
+                scale-110
+                rotate-1.5
                 -z-10
-                translate-y-8
               "
             ></div>
 
-            {/* NEON HALO */}
+            {/* 🔥 STRONGER NEON HALO */}
             <div
               className="
-                absolute inset-0 
-                rounded-full 
-                bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 
-                opacity-25 
-                blur-[100px] 
+                absolute -inset-6
+                rounded-3xl
+                bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400
+                blur-[130px]
+                opacity-40
                 -z-20
               "
             ></div>
-
           </div>
         </motion.div>
 
