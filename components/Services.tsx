@@ -19,42 +19,42 @@ const servicesData: Service[] = [
     title: "Social Media Branding",
     description:
       "Create a premium digital identity with high-trust, cohesive brand visuals across platforms.",
-    icon: <Share2 className="h-10 w-10 text-blue-400" />,
+    icon: <Share2 className="h-10 w-10 text-blue-400 drop-shadow-xl" />,
   },
   {
     id: 2,
     title: "SEO – Organic Visibility",
     description:
       "Boost long-term search performance and attract high-intent traffic using modern SEO frameworks.",
-    icon: <Search className="h-10 w-10 text-blue-400" />,
+    icon: <Search className="h-10 w-10 text-green-400 drop-shadow-xl" />,
   },
   {
     id: 3,
     title: "Facebook Ads – Lead Acquisition",
     description:
       "Scale predictable, high-quality lead generation with optimized targeting and creative strategies.",
-    icon: <Target className="h-10 w-10 text-blue-400" />,
+    icon: <Target className="h-10 w-10 text-pink-400 drop-shadow-xl" />,
   },
   {
     id: 4,
     title: "Influencer Marketing",
     description:
       "Amplify brand trust through strategic creator partnerships tailored to your audience.",
-    icon: <Users className="h-10 w-10 text-blue-400" />,
+    icon: <Users className="h-10 w-10 text-yellow-400 drop-shadow-xl" />,
   },
   {
     id: 5,
     title: "Funnel Marketing",
     description:
       "Design complete customer journeys engineered to maximize retention and conversion.",
-    icon: <Funnel className="h-10 w-10 text-blue-400" />,
+    icon: <Funnel className="h-10 w-10 text-purple-400 drop-shadow-xl" />,
   },
   {
     id: 6,
     title: "Email Marketing",
     description:
       "Implement automated workflows that nurture leads and improve customer lifetime value.",
-    icon: <Mail className="h-10 w-10 text-blue-400" />,
+    icon: <Mail className="h-10 w-10 text-red-400 drop-shadow-xl" />,
   },
 ];
 
@@ -67,28 +67,35 @@ export default function Services() {
   }, []);
 
   return (
-    <section className="bg-[#0F172A] text-white py-24 px-6 md:px-16 relative">
+    <section className="bg-[#0A0F2A] text-white py-28 px-6 md:px-16 relative overflow-hidden">
 
-      {/* Glow */}
-      <div className="absolute -top-20 right-0 w-80 h-80 bg-purple-600/20 blur-[140px]"></div>
+      {/* Top Glow */}
+      <div className="absolute -top-40 left-10 w-96 h-96 bg-blue-500/20 blur-[150px] rounded-full"></div>
+
+      {/* Bottom Glow */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/20 blur-[200px] rounded-full"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        
+
         {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl">
             Our Strategic Solutions
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-gray-300 max-w-2xl mx-auto mt-4">
             Premium, scalable marketing systems engineered for performance and clarity.
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {loading
             ? Array.from({ length: 6 }).map((_, index) => (
-                <Card key={index} className="bg-[#1E293B] p-6 rounded-2xl">
+                <Card
+                  key={index}
+                  className="bg-[#111D38]/40 backdrop-blur-lg border border-white/10 
+                  p-6 rounded-2xl shadow-xl"
+                >
                   <Skeleton className="h-12 w-12 mb-4 rounded-full" />
                   <Skeleton className="h-6 w-3/4 mb-3" />
                   <Skeleton className="h-4 w-full mb-2" />
@@ -98,22 +105,42 @@ export default function Services() {
             : servicesData.map((service, i) => (
                 <motion.div
                   key={service.id}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="bg-[#1E293B] border border-white/10 p-8 rounded-2xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-600/10 transition-all duration-300">
-                    <CardHeader className="flex flex-col items-center">
-                      {service.icon}
-                      <CardTitle className="text-xl mt-4 text-white text-center">
-                        {service.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-300 text-center">{service.description}</p>
-                    </CardContent>
-                  </Card>
+                  <motion.div
+                    whileHover={{
+                      scale: 1.06,
+                      rotateX: 7,
+                      rotateY: -7,
+                      boxShadow: "0px 0px 40px rgba(88, 80, 255, 0.4)",
+                    }}
+                    transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                  >
+                    <Card
+                      className="
+                      bg-[#111D38]/40 backdrop-blur-xl border border-white/20 
+                      rounded-2xl p-8 
+                      shadow-xl transition-all duration-300
+                      hover:border-blue-400/40
+                      hover:shadow-[0_0_35px_#4c6fff55] 
+                      bg-gradient-to-br from-white/5 to-transparent
+                    "
+                    >
+                      <CardHeader className="flex flex-col items-center">
+                        {service.icon}
+                        <CardTitle className="text-xl mt-4 text-white text-center font-semibold drop-shadow-md">
+                          {service.title}
+                        </CardTitle>
+                      </CardHeader>
+
+                      <CardContent className="text-gray-300 text-center leading-relaxed">
+                        {service.description}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </motion.div>
               ))}
         </div>
