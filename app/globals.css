@@ -102,3 +102,31 @@ button {
 .animate-slideDown {
   animation: slideDown 0.25s ease-out;
 }
+/* Animated gradient background for the entire website */
+body {
+  background: linear-gradient(135deg, #4f46e5, #d946ef, #fb923c, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Smooth Glass Effect Elements */
+.glass {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* 3D Hover Effect */
+.card-3d {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-3d:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
