@@ -6,43 +6,61 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-950 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6 md:px-16 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="relative overflow-hidden bg-[#0A0F2A] text-gray-300 pt-24 pb-10">
 
-        {/* Brand Info */}
+      {/* Background Glows */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/20 blur-[180px]"></div>
+        <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-purple-600/20 blur-[200px]"></div>
+      </div>
+
+      {/* Main Grid */}
+      <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14">
+
+        {/* Brand */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h3 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h3 className="text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-xl mb-4">
             DigiLabs
           </h3>
 
-          <p className="text-sm leading-relaxed opacity-80">
-            We help businesses grow using modern marketing, data-driven
-            strategy, and clean, conversion-focused design.
+          <p className="text-sm text-gray-300/90 leading-relaxed">
+            Building premium, high-performance digital experiences with modern design, 
+            automation, and scalable marketing systems.
           </p>
 
-          <div className="flex gap-4 mt-5">
+          {/* Social Icons */}
+          <div className="flex gap-4 mt-6">
             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-              <Link key={i} href="#" className="group">
-                <Icon className="w-5 h-5 transition transform group-hover:scale-110 group-hover:text-blue-500 dark:group-hover:text-blue-400" />
-              </Link>
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 200, damping: 10 }}
+              >
+                <Link
+                  href="#"
+                  className="p-2 rounded-lg bg-white/5 backdrop-blur-xl border border-white/10
+                    hover:border-blue-500 hover:shadow-[0_0_15px_#3b82f6aa] transition"
+                >
+                  <Icon className="w-5 h-5 text-gray-300 hover:text-blue-400" />
+                </Link>
+              </motion.div>
             ))}
           </div>
         </motion.div>
 
         {/* Quick Links */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-            Quick Links
-          </h4>
-          <ul className="space-y-2 text-sm opacity-90">
+          <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+
+          <ul className="space-y-3 text-sm">
             {[
               { name: "Home", url: "/" },
               { name: "About", url: "/about" },
@@ -52,10 +70,13 @@ export default function Footer() {
               <li key={i}>
                 <Link
                   href={item.url}
-                  className="relative hover:text-blue-600 dark:hover:text-blue-400 transition"
+                  className="relative text-gray-300 hover:text-blue-400 transition group"
                 >
-                  <span className="inline-block">{item.name}</span>
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                  {item.name}
+                  <span
+                    className="absolute left-0 bottom-0 h-[2px] w-0 bg-blue-500 
+                    group-hover:w-full transition-all duration-300"
+                  ></span>
                 </Link>
               </li>
             ))}
@@ -64,47 +85,55 @@ export default function Footer() {
 
         {/* Services */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-            Services
-          </h4>
-          <ul className="space-y-2 text-sm opacity-90">
+          <h4 className="text-white font-semibold mb-4">Services</h4>
+
+          <ul className="space-y-3 text-sm">
             {[
               "SEO Optimization",
               "Paid Advertising",
               "Social Media Marketing",
               "Branding & Design",
             ].map((service, i) => (
-              <li key={i} className="hover:text-blue-500 dark:hover:text-blue-400 transition">
+              <li
+                key={i}
+                className="hover:text-purple-400 transition cursor-pointer"
+              >
                 {service}
               </li>
             ))}
           </ul>
         </motion.div>
 
-        {/* Contact Info */}
+        {/* Contact */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-            Contact Us
-          </h4>
-          <ul className="space-y-2 text-sm opacity-90">
-            <li>Email: sam@digilabsmarketing.com</li>
-            <li>Phone: +1(916) 407-0909</li>
-            <li>1700 Eureka Rd, Roseville, CA 95661, USA</li>
+          <h4 className="text-white font-semibold mb-4">Contact Us</h4>
+
+          <ul className="space-y-3 text-sm">
+            <li className="hover:text-blue-400 transition">
+              Email: sam@digilabsmarketing.com
+            </li>
+            <li className="hover:text-blue-400 transition">
+              Phone: +1 (916) 407-0909
+            </li>
+            <li className="hover:text-blue-400 transition">
+              1700 Eureka Rd, Roseville, CA 95661
+            </li>
           </ul>
         </motion.div>
+
       </div>
 
-      {/* Bottom Section */}
-      <div className="border-t border-gray-200 dark:border-gray-800 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} DigiLabs. All rights reserved.
+      {/* Bottom */}
+      <div className="mt-16 border-t border-white/10 py-6 text-center text-gray-400 text-sm">
+        © {new Date().getFullYear()} DigiLabs — All rights reserved.
       </div>
     </footer>
   );
