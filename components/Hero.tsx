@@ -60,18 +60,17 @@ export default function Hero() {
               >
                 Get Started
               </Button>
-            </Link>
-
-            <Link href="/services">
+            </LiButton           <Link href="/services">
               <Button
-                variant="outline"
                 className="
-                  px-8 py-4 text-lg rounded-full border-2
-                  backdrop-blur-xl bg-white/10 dark:bg-black/20
-                  shadow-inner text-white hover:bg-white/20 transition
+                  px-8 py-4 text-lg rounded-full
+                  bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400
+                  text-white shadow-xl shadow-pink-500/30
+                  hover:shadow-pink-500/50 hover:scale-105
+                  transition-all
                 "
               >
-                View Services
+                view services
               </Button>
             </Link>
           </div>
