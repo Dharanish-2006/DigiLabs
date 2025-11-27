@@ -7,38 +7,56 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#0F172A] py-28 px-6 md:px-16">
-      
-      {/* Glow Background */}
-      <div className="absolute top-1/3 -left-20 w-80 h-80 bg-blue-600/30 blur-[150px] rounded-full"></div>
-      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-purple-600/30 blur-[150px] rounded-full"></div>
+    <section className="relative overflow-hidden py-24 md:py-32 flex justify-center items-center">
 
-      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-20">
+      {/* 🔵 Glowing Background Orbs */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-purple-600/30 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-pink-500/30 blur-[130px] rounded-full"></div>
+        <div className="absolute top-[40%] left-[40%] w-[350px] h-[350px] bg-blue-500/20 blur-[110px] rounded-full"></div>
+      </div>
 
-        {/* Text */}
+      {/* MAIN CONTENT */}
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-20 px-6 md:px-12">
+
+        {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center lg:text-left"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8">
-            Empowering Business Growth Through  
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-              {" "}Strategic Digital Solutions
+          {/* 🔥 Gradient Neon Heading */}
+          <h1 className="
+            text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight 
+            bg-gradient-to-r from-purple-400 via-pink-400 to-orange-300 
+            text-transparent bg-clip-text drop-shadow-[0_4px_15px_rgba(255,0,150,0.4)]
+          ">
+            Transform Your Business With
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
+              High-Performance Digital Marketing
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0 mb-12 leading-relaxed">
-            <strong className="text-white">DigiLabs Marketing</strong> drives 
-            performance-based growth with clean design, powerful targeting, and 
-            modern marketing execution built for scale.
+          {/* Subtitle */}
+          <p className="mt-6 text-lg md:text-xl text-gray-200/90 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            DigiLabs builds powerful, scalable digital strategies designed to boost visibility, drive conversions, and accelerate business growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          {/* BUTTONS */}
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <Link href="/contact">
-              <Button className="px-8 py-4 text-lg rounded-full bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition">
+              <Button
+                className="
+                  px-8 py-4 text-lg rounded-full
+                  bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400
+                  text-white shadow-xl shadow-pink-500/30
+                  hover:shadow-pink-500/50 hover:scale-105
+                  transition-all
+                "
+              >
                 Get Started
               </Button>
             </Link>
@@ -46,7 +64,11 @@ export default function Hero() {
             <Link href="/services">
               <Button
                 variant="outline"
-                className="px-8 py-4 text-lg rounded-full border-2 border-gray-400 hover:border-white hover:bg-white/10 transition"
+                className="
+                  px-8 py-4 text-lg rounded-full border-2
+                  backdrop-blur-xl bg-white/10 dark:bg-black/20
+                  shadow-inner text-white hover:bg-white/20 transition
+                "
               >
                 View Services
               </Button>
@@ -54,26 +76,38 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Image */}
+        {/* RIGHT SIDE IMAGE WITH 3D EFFECT */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex justify-center relative"
+          className="relative flex justify-center"
         >
           <div className="relative w-full max-w-md">
-            <Image
-              src="/hero-banner.png"
-              alt="Digital marketing illustration"
-              width={550}
-              height={550}
-              priority
-              className="drop-shadow-[0_20px_40px_rgba(59,130,246,0.3)]"
-            />
+            {/* 3D floating effect */}
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src="/hero-banner.png"
+                alt="Digital marketing illustration"
+                width={520}
+                height={520}
+                priority
+                className="
+                  w-full h-auto select-none pointer-events-none
+                  drop-shadow-[0_10px_35px_rgba(255,0,180,0.3)]
+                "
+              />
+            </motion.div>
 
-            {/* Glow circle */}
-            <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full -z-10"></div>
+            {/* Glass glow */}
+            <div className="absolute inset-0 rounded-3xl bg-white/10 dark:bg-white/5 backdrop-blur-2xl border border-white/20 shadow-lg -z-10"></div>
+
+            {/* Outer neon ring */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 opacity-30 blur-3xl -z-20"></div>
           </div>
         </motion.div>
 
