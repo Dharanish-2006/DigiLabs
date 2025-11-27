@@ -139,8 +139,6 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-
-          <ModeToggle />
         </div>
       </div>
     </header>
