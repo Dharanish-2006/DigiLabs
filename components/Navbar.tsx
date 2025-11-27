@@ -94,7 +94,7 @@ export default function Navbar() {
             );
           })}
 
-          <ModeToggle />
+          
         </nav>
 
         {/* Mobile Menu Button */}
