@@ -82,7 +82,7 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl">
             Our Strategic Solutions
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto mt-4">
+          <p className="text-gray-300 max-w-2xl mx-auto mt-8">
             Premium, scalable marketing systems engineered for performance and clarity.
           </p>
         </div>
