@@ -92,7 +92,7 @@ export default function Footer() {
           <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-lg">Contact Us</h4>
           <ul className="space-y-2 text-sm opacity-90">
             <li>Email: sam@digilabsmarketing.com</li>
-            <li>Phone: +1 (916) 407-0909</li>
+            <li>Phone: (510) 616-6162</li>
             <li>1700 Eureka Rd, Roseville, CA 95661, USA</li>
           </ul>
         </motion.div>
