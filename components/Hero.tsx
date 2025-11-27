@@ -77,32 +77,30 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* RIGHT — IMAGE SECTION (3D + GLASS + PERFECT ALIGNMENT) */}
+        {/* RIGHT — IMAGE SECTION (RIGHT-ALIGNED, DYNAMIC SIZE) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 40 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: true }}
-          className="relative flex justify-center lg:justify-end lg:-mt-10 xl:-mt-16 pr-4"
+          className="relative flex justify-end items-center w-full"
         >
-          <div className="relative w-full max-w-md lg:max-w-lg">
+          <div className="relative w-[60vw] max-w-[600px] h-auto lg:w-[40vw] lg:max-w-[650px]">
 
             {/* FLOAT ANIMATION */}
             <motion.div
               animate={{ y: [-15, 10, -15] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="translate-x-2 lg:translate-x-8"
             >
               <Image
                 src="/hero-banner.png"
                 alt="Digital marketing illustration"
-                width={550}
-                height={550}
+                width={600}
+                height={600}
                 priority
                 className="
                   w-full h-auto select-none pointer-events-none
                   drop-shadow-[0_20px_55px_rgba(255,0,180,0.35)]
-                  lg:scale-110
                 "
               />
             </motion.div>
