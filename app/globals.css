@@ -102,3 +102,12 @@ button {
 .animate-slideDown {
   animation: slideDown 0.25s ease-out;
 }
+body {
+  background: #0F172A;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.section-container {
+  @apply max-w-7xl mx-auto px-6 py-20;
+}
