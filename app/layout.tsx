@@ -52,11 +52,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden antialiased relative">
         <Particles />
-        <ThemeProvider>
+        
           <Navbar />
           {children}
           <Footer />
-        </ThemeProvider>
+        
       </body>
     </html>
   );
