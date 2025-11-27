@@ -78,15 +78,24 @@ export default function Services() {
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* Heading */}
-        <div className="text-center mb-28 pt-6">
-          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl">
-            Our Strategic Solutions
-          </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto mt-8">
-            Premium, scalable marketing systems engineered for performance and clarity.
-          </p>
-        </div>
+        <div className="text-center mb-28 pt-6"> 
+  <h2
+    className="
+      text-4xl md:text-5xl font-extrabold 
+      bg-gradient-to-r from-blue-500 to-purple-500 
+      bg-clip-text text-transparent 
+      drop-shadow-2xl
+      leading-[1.25]
+      pb-2
+    "
+  >
+    Our Strategic Solutions
+  </h2>
 
+  <p className="text-gray-300 max-w-2xl mx-auto mt-8">
+    Premium, scalable marketing systems engineered for performance and clarity.
+  </p>
+</div>
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {loading
