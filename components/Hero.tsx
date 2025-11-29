@@ -96,14 +96,14 @@ export default function Hero() {
               className="relative z-20"
             >
               <Image
-                src="/hero-banner.png"
+                src="/digihero.png"
                 alt="Digital marketing illustration"
                 width={800}
                 height={800}
                 priority
                 className="
                   w-full h-auto select-none pointer-events-none
-                  drop-shadow-[0_25px_70px_rgba(255,0,180,0.45)]
+                  drop-shadow-[0_25px_70px_#ffff]
                 "
               />
             </motion.div>
