@@ -84,7 +84,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: true }}
-          className="relative flex justify-end items-center w-full"
+          className="relative flex justify-center items-center w-full"
         >
           {/* IMAGE WRAPPER */}
           <div className="relative w-[70vw] max-w-[750px] h-auto lg:w-[45vw] lg:max-w-[780px]">
