@@ -96,10 +96,10 @@ export default function Hero() {
               className="relative z-20"
             >
               <Image
-                src="/digihero.png"
+                src="/hero.png"
                 alt="Digital marketing illustration"
                 width={800}
-                height={800}
+                height={600}
                 priority
                 className="
                   w-full h-auto select-none pointer-events-none
