@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <main className="text-white bg-[#0F172A] relative overflow-hidden">
 
-      {/* 🔵 Background Glows */}
+      {/*  Background Glows */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-purple-600/30 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-pink-500/30 blur-[130px] rounded-full"></div>
