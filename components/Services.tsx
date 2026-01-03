@@ -4,7 +4,7 @@ import { useEffect, useState, JSX } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "framer-motion";
-import { Share2, Search, Target, Users, Funnel, Mail } from "lucide-react";
+import { Share2, Search, Target, Users, Funnel, Mail, Sparkles  , Globe2    } from "lucide-react";
 
 interface Service {
   id: number;
@@ -15,42 +15,56 @@ interface Service {
 
 const servicesData: Service[] = [
   {
-    id: 1,
+    id:1,
+    title: "Website Designing Services",
+    description:
+    "Custom Website Design , Responsive Design (Mobile, Tablet & Desktop) , Business Websites & Portfolio Sites , E-commerce Website Design , SEO-Friendly Structure , Fast Loading & Secure Websites",
+    icon: <Globe2 className="w-10 h-10 text-blue-400" />,
+  },
+  {
+    id: 2,
+    title: "Logo Designing Services",
+    description:
+    "Logo Designing Services,Modern & Creative Designs,Business & Startup Logos,Social Media & Branding Logos,High-Resolution Files (PNG, JPG, SVG)",
+    icon: <Sparkles className="w-10 h-10 text-blue-400" />,
+  },
+  {
+    id: 3,
     title: "Social Media Branding",
     description:
       "Create a premium digital identity with high-trust, cohesive brand visuals across platforms.",
     icon: <Share2 className="h-10 w-10 text-blue-400 drop-shadow-xl" />,
   },
   {
-    id: 2,
+    id: 4,
     title: "SEO – Organic Visibility",
     description:
       "Boost long-term search performance and attract high-intent traffic using modern SEO frameworks.",
     icon: <Search className="h-10 w-10 text-green-400 drop-shadow-xl" />,
   },
   {
-    id: 3,
+    id: 5,
     title: "Facebook Ads – Lead Acquisition",
     description:
       "Scale predictable, high-quality lead generation with optimized targeting and creative strategies.",
     icon: <Target className="h-10 w-10 text-pink-400 drop-shadow-xl" />,
   },
   {
-    id: 4,
+    id: 6,
     title: "Influencer Marketing",
     description:
       "Amplify brand trust through strategic creator partnerships tailored to your audience.",
     icon: <Users className="h-10 w-10 text-yellow-400 drop-shadow-xl" />,
   },
   {
-    id: 5,
+    id: 7,
     title: "Funnel Marketing",
     description:
       "Design complete customer journeys engineered to maximize retention and conversion.",
     icon: <Funnel className="h-10 w-10 text-purple-400 drop-shadow-xl" />,
   },
   {
-    id: 6,
+    id: 8,
     title: "Email Marketing",
     description:
       "Implement automated workflows that nurture leads and improve customer lifetime value.",
@@ -99,7 +113,7 @@ export default function Services() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {loading
-            ? Array.from({ length: 6 }).map((_, index) => (
+            ? Array.from({ length: 8 }).map((_, index) => (
                 <Card
                   key={index}
                   className="bg-[#111D38]/40 backdrop-blur-lg border border-white/10 
@@ -145,7 +159,7 @@ export default function Services() {
                         </CardTitle>
                       </CardHeader>
 
-                      <CardContent className="text-gray-300 text-center leading-relaxed">
+                      <CardContent className="text-gray-300 text-center leading-relaxed text-sm">
                         {service.description}
                       </CardContent>
                     </Card>

@@ -3,9 +3,21 @@
 import Navbar from "@/components/Navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Megaphone, Search, Target, Users, Split, Mail } from "lucide-react";
+import { Megaphone, Search, Target, Users, Split, Mail, Globe2, Sparkles } from "lucide-react";
 
 const services = [
+  {
+    title: "Website Designing Services",
+    icon: <Globe2 className="w-10 h-10 text-blue-400" />,
+    description:
+      "Custom Website Design , Responsive Design (Mobile, Tablet & Desktop) , Business Websites & Portfolio Sites , E-commerce Website Design , SEO-Friendly Structure , Fast Loading & Secure Websites",
+  },
+  {
+    title: "Logo Designing Services",
+    icon: <Sparkles className="w-10 h-10 text-blue-400" />,
+    description:
+      "Logo Designing Services,Modern & Creative Designs,Business & Startup Logos,Social Media & Branding Logos,High-Resolution Files (PNG, JPG, SVG)",
+  },
   {
     title: "Social Media Branding — Consistent Corporate Presence",
     icon: <Megaphone className="w-10 h-10 text-blue-400" />,
