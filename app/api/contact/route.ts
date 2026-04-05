@@ -1,10 +1,34 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import dns from "dns/promises";
 
 interface ContactPayload {
   name: string;
   email: string;
   message: string;
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+async function domainExists(email: string) {
+  const domain = email.split("@")[1];
+  if (!domain) return false;
+
+  try {
+    const records = await dns.resolveMx(domain);
+    return records && records.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function escapeHTML(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 export async function POST(req: Request) {
@@ -19,6 +43,24 @@ export async function POST(req: Request) {
       );
     }
 
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: "Invalid email format" },
+        { status: 400 }
+      );
+    }
+
+    if (!(await domainExists(email))) {
+      return NextResponse.json(
+        { error: "Email domain does not exist" },
+        { status: 400 }
+      );
+    }
+
+    const safeName = escapeHTML(name);
+    const safeEmail = escapeHTML(email);
+    const safeMessage = escapeHTML(message);
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -27,7 +69,7 @@ export async function POST(req: Request) {
       },
     });
 
-    await transporter.sendMail({
+await transporter.sendMail({
       from: `"DigiLabs Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.TO_EMAIL,
       replyTo: email,
@@ -106,7 +148,7 @@ export async function POST(req: Request) {
   </table>
 </body>
 </html>
-`
+`,
     });
 
     return NextResponse.json({ success: true });
@@ -114,7 +156,7 @@ export async function POST(req: Request) {
     console.error("MAIL ERROR:", error);
     return NextResponse.json(
       { error: "Failed to send email" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

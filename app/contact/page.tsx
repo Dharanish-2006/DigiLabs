@@ -25,16 +25,21 @@ export default function ContactPage() {
   const [status, setStatus] = useState<"success" | "error" | null>(null);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isValidEmail(formData.email)) {
+      setStatus("error");
+      return;
+    }
     setLoading(true);
     setStatus(null);
-
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -187,7 +192,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-20 w-full h-[450px] rounded-3xl overflow-hidden border border-white/20 shadow-lg"
         >
-         <iframe
+          <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.1869644442413!2d-121.21622992494385!3d38.73647165618493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809b1e2b16347519%3A0x85d33e56df285f31!2sEureka%20Rd%2C%20California%2C%20USA!5e0!3m2!1sen!2sin!4v1764168816825!5m2!1sen!2sin"
             width="100%"
             height="100%"
