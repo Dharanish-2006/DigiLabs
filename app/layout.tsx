@@ -13,6 +13,7 @@ const inter = Inter({
 
 // SEO metadata
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.digilabsmarketing.com"),
   title: "DigiLabs Marketing | Digital Marketing Agency",
   description:
     "DigiLabs helps businesses grow using data-driven digital marketing, branding, and modern web strategies.",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title: "DigiLabs Marketing",
     description:
       "Scale your business with results-driven digital marketing services.",
-    url: "https://your-domain.com/",
+    url: "https://www.digilabsmarketing.com/",
     siteName: "DigiLabs Marketing",
     type: "website",
     images: [
