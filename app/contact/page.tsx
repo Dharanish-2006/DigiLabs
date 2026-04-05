@@ -89,7 +89,7 @@ export default function ContactPage() {
             },
             {
               icon: <Phone className="text-blue-400" />,
-              text: "(510) 616-6162",
+              text: "(510) 616-6162 / (530) 953-5555",
             },
             {
               icon: <Globe className="text-blue-400" />,
